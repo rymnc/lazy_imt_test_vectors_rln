@@ -75,6 +75,13 @@ contract LazyIMTTest is Test {
         console2.log("root: %s", binaryRoot());
     }
 
+    function testBenchBinaryInsertion() public {
+        uint256 gas_start = gasleft();
+        binaryInsert(19143711682366759980911001457853255795836264632723844153354310748778748156460);
+        uint256 gas_used = gas_start - gasleft();
+        console2.log("gas used: %s", gas_used);
+    }
+
     function testHasher() public {
         assertEq(
             PoseidonT3.hash([19014214495641488759237505126948346942972912379615652741039992445865937985820, 0]),
