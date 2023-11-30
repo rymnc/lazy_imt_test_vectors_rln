@@ -3,6 +3,7 @@ pragma solidity ^0.8.13;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {LazyIMT, LazyIMTData} from "imt.sol/LazyIMT.sol";
+import {PoseidonT3} from "poseidon-solidity/PoseidonT3.sol";
 
 contract LazyIMTTest is Test {
     LazyIMTData public data;
@@ -41,5 +42,12 @@ contract LazyIMTTest is Test {
         insert(17318633845296358766427229711888486415250435256643711009388405482885762601797);
 
         console2.log("root: %s", root());
+    }
+
+    function testHasher() public {
+        assertEq(
+            PoseidonT3.hash([19014214495641488759237505126948346942972912379615652741039992445865937985820, 0]),
+            13164376930590487041313497514223288845711140604177161029957349518915056324115
+        );
     }
 }
